@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Hugo",
+        "surname": "Nogueira",
+        "office": "Barcelona",
+        "department": "FullStack"
+    },
+    {
+        "name": "Rodrigo",
+        "surname": "López",
+        "office": "Barcelona",
+        "department": "FullStack"
+    }
+]

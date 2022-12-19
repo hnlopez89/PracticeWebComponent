@@ -1,9 +1,9 @@
-class ElementWrapper extends HTMLElement{
-    constructor(){
-        super();
-        this.show="false"
-        // Create a shadow root
-        const shadow = this.attachShadow({ mode: "open" });
+export default class ElementWrapper extends HTMLElement{
+  constructor(){
+    super();
+    this.show="false"
+    // Create a shadow root
+    const shadow = this.attachShadow({ mode: "open" });
 
         // Create spans
         const wrapper = document.createElement("span");
@@ -67,4 +67,3 @@ class ElementWrapper extends HTMLElement{
     }
 
 }
-window.customElements.define("element-wrapper", ElementWrapper)

@@ -1,30 +1,39 @@
-class PersonForm extends HTMLElement{
+export default class PersonForm extends HTMLElement{
     constructor(){
         super();
         let shadow = this.attachShadow({mode:'open'});
         this.elementRoot = document.createElement('div');
 
-        let nameLabel = document.createElement('label');
-        nameLabel.innerText = 'First Name: ';
+        
+        let roleLabel = document.createElement('label');
+        roleLabel.innerText = 'Role: ';
+        
+        let roleSelect = document.createElement('select');
+        let adminOption = document.createElement('option');
+        let employeeOption = document.createElement('option');
+        let userOption = document.createElement('option');
+        adminOption.innerText = "Administrador";
+        adminOption.value = "admin";
+        employeeOption.innerText = "Empleado";
+        employeeOption.value = "employee";
+        userOption.innerText = "Usuario";
+        userOption.value = "user";
+        
+        roleSelect.appendChild(userOption)
+        roleSelect.appendChild(employeeOption)
+        roleSelect.appendChild(adminOption)
 
-        let lastNameLabel = document.createElement('label');
-        lastNameLabel.innerText = 'Last Name: ';
-
-        let nameInput = document.createElement('input');
-        let lastNameInput = document.createElement('input');
-
+        
         this.div = document.createElement('div');
-        this.div.className="form";
+        this.div.id = "form"
 
-        this.div.appendChild(nameLabel)
-        this.div.appendChild(nameInput)
-        this.div.appendChild(lastNameLabel)
-        this.div.appendChild(lastNameInput)
+        this.div.appendChild(roleLabel)
+        this.div.appendChild(roleSelect)
 
 
         let style = `
         <style>
-        .form{
+        #form{
             display:flex;
             flex-direction: column;
             justify-content: center;
@@ -38,18 +47,32 @@ class PersonForm extends HTMLElement{
             color: red;
             margin: 2rem auto; 
         }
+        .bcn{
+            background-image: url('img/barcelona.jpg')
+        }
+        .madrid{
+            background-image: url('img/madrid.jpg')
+        }
+        .galicia{
+            background-image: url('img/galicia.jpg')
+        }
+        .buenosAires{
+            background-image: url('img/buenosAires.jpg')
+        }
         </style>`
 
         let result = document.createElement('span');
         result.className = "FullNameNotification";
         this.div.append(result);
 
-        this.onChangeValue = () => {
-            result.innerHTML = `Hello ${nameInput.value} ${lastNameInput.value}`
+        this.onChangeRole = () => {
+            this.role = roleSelect.value
+            console.log(this.role);
         }
+        roleSelect.addEventListener('change', this.onChangeRole)
 
-        nameInput.addEventListener('change', this.onChangeValue)
-        lastNameInput.addEventListener('change', this.onChangeValue)
+
+
 
         this.role = this.getAttribute("role");
         this.elementRoot.append(this.div)
@@ -57,7 +80,7 @@ class PersonForm extends HTMLElement{
         shadow.append(this.elementRoot)
     }
     static get observedAttributes(){
-        return ['role', 'office']
+        return ['role', 'office', 'dept', 'name', 'surname', 'emailAddress']
     }
 
     attributeChangedCallback(att, oldValue, newValue){
@@ -66,51 +89,12 @@ class PersonForm extends HTMLElement{
         if(att === 'office'){
             console.log('att :'+ att + '\n oldvalue: ' + oldValue + '\n newValue: ' + newValue);
         }
+
     }
 
     connectedCallback(){
-        if(this.role = "admin"){
-            const span = document.createElement('span');
-            span.className = "OfficeNotification"
-            const inputOffice = document.createElement('select');
-            const barcelonaOption = document.createElement('option');
-            const madridOption = document.createElement('option');
-            const buenosAiresOption = document.createElement('option');
-            const galiciaOption = document.createElement('option');
-            barcelonaOption.innerText = "Barcelona";
-            barcelonaOption.value="Barcelona"
-            madridOption.innerText = "Madrid";
-            madridOption.value="Madrid"
-            buenosAiresOption.innerText = "Buenos Aires";
-            buenosAiresOption.value="Buenos Aires"
-            galiciaOption.innerText = "Galicia";
-            galiciaOption.value="Galicia"
-            inputOffice.append(barcelonaOption)
-            inputOffice.append(madridOption)
-            inputOffice.append(buenosAiresOption)
-            inputOffice.append(galiciaOption)
-            const labelOffice = document.createElement('label');
-            labelOffice.innerText = "Indica tu oficina";
-            this.onChangeOffice = () => {
-                console.log("tu ofi es: "+ inputOffice.value);
-                    if(inputOffice.value === "Barcelona") {
-                        console.log("Barcelona");
-                        span.innerText = inputOffice.value    
-                        this.div.append(span)
-                        let oldOffice = this.getAttribute("office")
-                        console.log(oldOffice);                        
-                        this.setAttribute("office", "Barcelona")
-                        oldOffice = this.getAttribute("office")
-                        console.log(oldOffice);                                                 
-                    }
-            }
-            inputOffice.addEventListener('change',this.onChangeOffice)
-            this.div.append(labelOffice)
-            this.div.append(inputOffice)
-
-            
+        if(this.role === "admin"){
         }
     }
 
 }
-window.customElements.define("person-form", PersonForm)

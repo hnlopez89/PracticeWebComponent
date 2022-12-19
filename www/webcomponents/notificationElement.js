@@ -1,4 +1,4 @@
-class NotificacionElement extends HTMLElement {
+export default class NotificationElement extends HTMLElement {
     constructor(){
       super()
       console.log("hola");
@@ -34,5 +34,5 @@ class NotificacionElement extends HTMLElement {
   }
   
   
-  window.customElements.define('my-example', ExampleElement);
+
   

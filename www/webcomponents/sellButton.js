@@ -1,4 +1,4 @@
-class SellButton extends HTMLElement {
+export default class SellButton extends HTMLElement {
     constructor(){
         super();
         this.show = true;
@@ -61,4 +61,3 @@ class SellButton extends HTMLElement {
 
     }
 }
-window.customElements.define("sell-button", SellButton);
