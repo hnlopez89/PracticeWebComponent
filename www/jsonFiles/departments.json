@@ -1,6 +1,6 @@
 [
-    {"name": "Management"},
-    {"name": "Full Stack"},
-    {"name": "QA"},
-    {"name": "contenido"}    
+    {"name": "Management", "code": "management"},
+    {"name": "Full Stack", "code": "fullStack"},
+    {"name": "QA", "code": "qa"},
+    {"name": "Contenido", "code": "content"}    
 ]

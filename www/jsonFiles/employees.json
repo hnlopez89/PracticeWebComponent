@@ -2,13 +2,25 @@
     {
         "name": "Hugo",
         "surname": "Nogueira",
+        "email": "hnlopez89@gmail.com",
         "office": "Barcelona",
+        "role": "employee",
         "department": "FullStack"
     },
     {
         "name": "Rodrigo",
         "surname": "López",
+        "email": "rod@yahoo.com",
         "office": "Barcelona",
+        "role": "employee",
         "department": "FullStack"
+    },
+    {
+        "name": "Lionel",
+        "surname": "Scaloni",
+        "email": "leo@yahoo.com",
+        "office": "Argentina",
+        "role": "admin",
+        "department": "management"
     }
 ]

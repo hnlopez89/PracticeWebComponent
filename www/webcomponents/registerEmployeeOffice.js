@@ -1,6 +1,8 @@
 export default class RegisterEmployeeOffice extends HTMLElement {
     constructor(){
         super();
+        this.div = document.createElement('div');
+
         const inputOffice = document.createElement('select');
         const barcelonaOption = document.createElement('option');
         const madridOption = document.createElement('option');
@@ -29,6 +31,7 @@ export default class RegisterEmployeeOffice extends HTMLElement {
         inputOffice.addEventListener('change',this.onChangeOffice)
         this.div.append(labelOffice)
         this.div.append(inputOffice)
+        this.appendChild(this.div)
     }
 }
 
