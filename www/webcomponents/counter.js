@@ -117,8 +117,8 @@ export default class CounterComponent extends HTMLElement {
         divButton.appendChild(this.decreaseButton)
         this.shadow.appendChild(this.customCountButton)
         this.shadow.appendChild(this.resetButton)
-        this.shadow.appendChild(divButton)
         this.shadow.appendChild(this.counters)
+        this.shadow.appendChild(divButton)
     }
     increase(){
         console.log("holi");
